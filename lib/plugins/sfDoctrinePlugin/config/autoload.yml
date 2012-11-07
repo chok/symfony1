@@ -3,4 +3,4 @@ autoload:
     name:       sfDoctrinePlugin lib
     path:       %SF_SYMFONY_LIB_DIR%/plugins/sfDoctrinePlugin/lib
     recursive:  true
-    exclude:    [doctrine]
+    exclude:    [doctrine, doctrine-oracle]
