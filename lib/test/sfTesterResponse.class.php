@@ -275,7 +275,7 @@ class sfTesterResponse extends sfTester
     $ok = false;
     $regex = false;
     $mustMatch = true;
-    if (preg_match('/^(!)?([^a-zA-Z0-9\\\\]).+?\\2[ims]?$/', $value, $match))
+    if (preg_match('/^(!)?([^a-zA-Z0-9\\\\]).+?\\2[ims]*$/', $value, $match))
     {
       $regex = $value;
       if ($match[1] == '!')
