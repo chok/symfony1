@@ -233,18 +233,14 @@ abstract class sfTestFunctionalBase
   public function call($uri, $method = 'get', $parameters = array(), $changeStack = true)
   {
     $this->checkCurrentExceptionIsEmpty();
-
     $uri = $this->browser->fixUri($uri);
 
     $this->test()->comment(sprintf('%s %s', strtolower($method), $uri));
-
     foreach ($this->testers as $tester)
     {
       $tester->prepare();
     }
-
     $this->browser->call($uri, $method, $parameters, $changeStack);
-
     return $this;
   }
 
