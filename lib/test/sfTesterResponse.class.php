@@ -92,7 +92,7 @@ class sfTesterResponse extends sfTester
     {
       $this->tester->is(count($values), $value, sprintf('response selector "%s" matches "%s" times', $selector, $value));
     }
-    else if (preg_match('/^(!)?([^a-zA-Z0-9\\\\]).+?\\2[ims]?$/', $value, $match))
+    else if (preg_match('/^(!)?([^a-zA-Z0-9\\\\]).+?\\2[ims]*$/', $value, $match))
     {
       $position = isset($options['position']) ? $options['position'] : 0;
       if ($match[1] == '!')
@@ -275,7 +275,7 @@ class sfTesterResponse extends sfTester
     $ok = false;
     $regex = false;
     $mustMatch = true;
-    if (preg_match('/^(!)?([^a-zA-Z0-9\\\\]).+?\\2[ims]?$/', $value, $match))
+    if (preg_match('/^(!)?([^a-zA-Z0-9\\\\]).+?\\2[ims]*$/', $value, $match))
     {
       $regex = $value;
       if ($match[1] == '!')

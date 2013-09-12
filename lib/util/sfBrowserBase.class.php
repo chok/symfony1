@@ -894,6 +894,13 @@ abstract class sfBrowserBase
 
       if (null !== $value)
       {
+        $path = explode('/', str_replace(array('[', ']'), array('/', ''), $elementName));
+        
+        if ($argument = $this->getArgument($path, $arguments))
+        {
+          $value = $argument;  
+        }
+        
         $this->parseArgumentAsArray($elementName, $value, $defaults);
       }
     }
@@ -910,6 +917,25 @@ abstract class sfBrowserBase
       $sep = false === strpos($url, '?') ? '?' : '&';
 
       return array($url.($queryString ? $sep.$queryString : ''), 'get', array());
+    }
+  }
+
+  protected function getArgument($path, $arguments)
+  {
+    if (!is_array($path) || empty($path))
+    {
+      return $arguments;
+    }
+    else
+    {
+      $key = array_shift($path);
+      
+      if (isset($arguments[$key]))
+      {
+        return $this->getArgument($path, $arguments[$key]);
+      }
+      
+      return null;
     }
   }
 
